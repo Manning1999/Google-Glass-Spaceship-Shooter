@@ -1,25 +1,25 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
+ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
 	package
 		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:70-97
 		INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml
-		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:98-144
 	android:versionCode
 		INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml
-		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-26:12
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:2:11-69
@@ -40,11 +40,9 @@ ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGla
 application
 ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:4:3-19:17
 	android:label
-		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:4:90-122
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:4:48-80
 	android:icon
-		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:4:58-89
-	android:theme
-		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:4:16-57
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:4:16-47
 activity#com.KBR.GlassTest.UnityPlayerActivity
 ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:5:5-14:16
 	android:screenOrientation
@@ -141,6 +139,28 @@ ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGla
 		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:25:81-105
 	android:name
 		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:25:17-80
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:26:3-63
+	android:name
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:26:20-60
+uses-feature#android.hardware.camera
+ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:27:3-83
+	android:required
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:27:56-80
+	android:name
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:27:17-55
+uses-feature#android.hardware.camera.autofocus
+ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:28:3-93
+	android:required
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:28:66-90
+	android:name
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:28:17-65
+uses-feature#android.hardware.camera.front
+ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:29:3-89
+	android:required
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:29:62-86
+	android:name
+		ADDED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml:29:17-61
 uses-sdk
 INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\manni\Desktop\Projects\GoogleGlassUnityTest\Builds\GoogleGlassUnityTest\src\main\AndroidManifest.xml
