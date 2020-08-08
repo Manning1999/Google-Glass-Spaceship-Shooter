@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlienSaucer : MonoBehaviour
+public class AlienSaucer : MonoBehaviour, IShootable
 {
 
     int health = 1;
@@ -17,11 +17,15 @@ public class AlienSaucer : MonoBehaviour
     private int pointsWhenKilled = 1;
 
 
+    float baseTimeBetweenMissiles = 8;
+
+
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        DecideNewDestination();    
+        DecideNewDestination();
+        StartCoroutine(MissileTimer());
     }
 
     // Update is called once per frame
@@ -44,33 +48,41 @@ public class AlienSaucer : MonoBehaviour
 
     private void DecideNewDestination()
     {
-        targetDestination = GameController.Instance._playArea.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 3));
+        targetDestination = GameController.Instance._playArea.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(4, 7)));
     }
 
 
-    public void TakeDamage(int damageTaken = 1)
-    {
-        health -= damageTaken;
-
-        if(health <= 0)
-        {
-            Die();
-        }
-    }
+  
 
 
     [ContextMenu("Kill")]
     public void Die()
     {
         GameController.Instance.DeactivateSaucer(this);
-        GameController.Instance._explosion.GetComponent<DisappearTimer>().SetLocation(Camera.main.WorldToScreenPoint(transform.position));
+
+        GameController.Instance._explosion.GetComponent<DisappearTimer>().SetLocation(transform.position);
+
         GameController.Instance._explosion.gameObject.SetActive(true);
 
         GameController.Instance.AddPoints(pointsWhenKilled);
     }
 
-    
+    public void TakeDamage(int damageTaken = 1)
+    {
+        health -= damageTaken;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
 
 
+    private IEnumerator MissileTimer()
+    {
+        yield return new WaitForSeconds(4);
 
+        GameController.Instance.ReactivateMissile().Reactivate(transform.position);
+        StartCoroutine(MissileTimer());
+    }
 }

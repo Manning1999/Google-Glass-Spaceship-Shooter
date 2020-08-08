@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameController : GestureDetector
+public class GameController : UnityGlassGestureDetector
 {
 
 
@@ -24,11 +24,17 @@ public class GameController : GestureDetector
     GameObject alienSaucer = null;
 
     [SerializeField]
+    GameObject missilePrefab = null;
+
+    [SerializeField]
     Camera playerCam = null;
 
     [SerializeField]
     Camera playArea = null;
     public Camera _playArea { get { return playArea; } }
+
+    [SerializeField]
+    private GameObject damageIndicator = null;
 
    
 
@@ -37,6 +43,13 @@ public class GameController : GestureDetector
 
     [SerializeField]
     List<AlienSaucer> inactiveAlienSaucers = new List<AlienSaucer>();
+
+
+    [SerializeField]
+    List<MissileController> activeMissiles = new List<MissileController>();
+
+    [SerializeField]
+    List<MissileController> inactiveMissiles = new List<MissileController>();
 
 
     [SerializeField]
@@ -107,12 +120,17 @@ public class GameController : GestureDetector
 
 
 
-    private void ModifyHealth(int healthChange)
+    public void ModifyHealth(int healthChange)
     {
         //If the health bonus will give the user more health than the maximum then reduce the health bonus so it doesn't go over the max
         if(healthChange + healthRemaining >= maxHealth)
         {
             healthChange -= maxHealth - healthChange;
+        }
+
+        if(healthChange < 0)
+        {
+            damageIndicator.SetActive(true);
         }
 
         
@@ -125,6 +143,7 @@ public class GameController : GestureDetector
     }
 
 
+
     public void DeactivateSaucer(AlienSaucer saucer)
     {
         activeAlienSaucers.Remove(saucer);
@@ -133,6 +152,7 @@ public class GameController : GestureDetector
         currentEnemiesInPlay--;
 
     }
+
 
     private void AddNewSaucer()
     {
@@ -148,19 +168,21 @@ public class GameController : GestureDetector
     }
 
 
+
     private void CreateNewSaucer()
     {
         int spawnSide = UnityEngine.Random.Range(1, 4);
         Vector3 spawnPos = new Vector3();
 
-        if (spawnSide == 1) spawnPos = playArea.ViewportToWorldPoint(new Vector3(0, Random.Range(0, 1), 3));  //Left Side
-        if (spawnSide == 2) spawnPos = playArea.ViewportToWorldPoint(new Vector3(1, Random.Range(0, 1), 3)); //Right Side
-        if (spawnSide == 3) spawnPos = playArea.ViewportToWorldPoint(new Vector3(Random.Range(0, 1), 1, 3)); //Top
-        if (spawnSide == 4) spawnPos = playArea.ViewportToWorldPoint(new Vector3(Random.Range(0, 1), 0, 3)); //Bottom
+        if (spawnSide == 1) spawnPos = playArea.ViewportToWorldPoint(new Vector3(0, Random.Range(0, 1), 5));  //Left Side
+        if (spawnSide == 2) spawnPos = playArea.ViewportToWorldPoint(new Vector3(1, Random.Range(0, 1), 5)); //Right Side
+        if (spawnSide == 3) spawnPos = playArea.ViewportToWorldPoint(new Vector3(Random.Range(0, 1), 1, 5)); //Top
+        if (spawnSide == 4) spawnPos = playArea.ViewportToWorldPoint(new Vector3(Random.Range(0, 1), 0, 5)); //Bottom
         currentEnemiesInPlay++;
         GameObject newSaucer = GameObject.Instantiate(alienSaucer, spawnPos, Quaternion.identity);
         activeAlienSaucers.Add(newSaucer.transform.GetComponent<AlienSaucer>());
     }
+
 
 
     private void ReactivateSaucer(AlienSaucer saucerToReactivate)
@@ -182,6 +204,38 @@ public class GameController : GestureDetector
     }
 
 
+    public void DeactivateMissile(MissileController deactivatedMissile)
+    {
+        activeMissiles.Remove(deactivatedMissile);
+        inactiveMissiles.Add(deactivatedMissile);
+        deactivatedMissile.gameObject.SetActive(false);
+    }
+
+    public MissileController ReactivateMissile()
+    {
+        MissileController newMissile = null;
+        if (inactiveMissiles.Count >= 1)
+        {
+            newMissile = inactiveMissiles[0];
+            inactiveMissiles.Remove(newMissile);
+            
+        }
+        else
+        {
+            newMissile = Instantiate(missilePrefab, new Vector3(999, 999, 999), Quaternion.identity).transform.GetComponent<MissileController>();
+        }
+
+        activeMissiles.Add(newMissile);
+
+        return newMissile;
+    }
+
+    public int GetActiveMissiles()
+    {
+        return activeMissiles.Capacity;
+    }
+
+
     private void EndGame()
     {
 
@@ -194,6 +248,8 @@ public class GameController : GestureDetector
         pointsText.SetText(points.ToString());
     }
 
+
+    
 
     
     public void SetPause(bool set = true)
@@ -260,9 +316,9 @@ public class GameController : GestureDetector
             // Does the ray intersect any objects excluding the player layer
             if (Physics.Raycast(playerCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f)), playerCam.transform.forward, out hit, Mathf.Infinity, layerMask))
             {
-                if (hit.transform.GetComponent<AlienSaucer>() != null)
+                if (hit.transform.GetComponent<IShootable>() != null)
                 {
-                    hit.transform.GetComponent<AlienSaucer>().TakeDamage();
+                    hit.transform.GetComponent<IShootable>().TakeDamage();
                     Debug.DrawRay(playerCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f)), playerCam.transform.forward * hit.distance, Color.green);
                     Debug.Log("Did Hit");
                 }

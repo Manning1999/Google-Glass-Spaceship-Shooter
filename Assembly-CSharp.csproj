@@ -66,11 +66,13 @@
     <Compile Include="Assets\Scripts\AlienSaucer.cs" />
     <Compile Include="Assets\Scripts\DisappearTimer.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\GestureDetector.cs" />
     <Compile Include="Assets\Scripts\GlassButton.cs" />
     <Compile Include="Assets\Scripts\GlassSwipeMenu.cs" />
     <Compile Include="Assets\Scripts\GyroCameraController.cs" />
     <Compile Include="Assets\Scripts\HighScores.cs" />
+    <Compile Include="Assets\Scripts\IShootable.cs" />
+    <Compile Include="Assets\Scripts\MissileController.cs" />
+    <Compile Include="Assets\Scripts\UnityGlassGestureDetector.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

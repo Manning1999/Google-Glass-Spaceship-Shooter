@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GlassSwipeMenu : GestureDetector
+public class GlassSwipeMenu : UnityGlassGestureDetector
 {
 
     [SerializeField]
     private List<GlassButton> buttons = new List<GlassButton>();
 
     [SerializeField]
-    private float buttonMoveSpeed = 3;
+    private int buttonMoveSpeed = 3;
 
     [SerializeField]
     private int currentButton = 0;
@@ -30,17 +30,10 @@ public class GlassSwipeMenu : GestureDetector
 
     public void FocusOnButton(int buttonToFocusOn)
     {
-        if (buttonToFocusOn > buttons.Count - 1 || buttonToFocusOn < 0) return;
+        if (buttonToFocusOn > buttons.Count || buttonToFocusOn < 0) return;
+        Debug.Log("Changing button");
 
-        distanceToShift = (int)Vector3.Distance(buttons[currentButton].gameObject.transform.position, buttons[buttonToFocusOn].gameObject.transform.position);
 
-        if (buttonToFocusOn < currentButton) distanceToShift = -distanceToShift;
-
-        originalPosition = transform.GetComponent<HorizontalLayoutGroup>().padding.left;
-        // desiredPadding = originalPosition - distanceToShift;
-        // transform.GetComponent<HorizontalLayoutGroup>().padding.left = (int)desiredPadding;
-        // transform.GetComponent<RectTransform>().ForceUpdateRectTransforms();
-        desiredPadding = originalPosition - (distanceToShift + 50);
         moveButtons = true;
         currentButton = buttonToFocusOn;
     }
@@ -53,26 +46,28 @@ public class GlassSwipeMenu : GestureDetector
 
         if(moveButtons == true)
         {
-            
-
-    
-            try
-            {
-                Debug.Log("Moving Now");
-                GetComponent<HorizontalLayoutGroup>().padding.left = (int)Mathf.Lerp(GetComponent<HorizontalLayoutGroup>().padding.left, desiredPadding, buttonMoveSpeed * Time.deltaTime);
-                Debug.Log("Got here");
-                LayoutRebuilder.ForceRebuildLayoutImmediate(transform.GetComponent<RectTransform>());
-            }
-            catch(Exception e)
-            {
-                Debug.Log(e);
-            }
-
-            if(transform.GetComponent<HorizontalLayoutGroup>().padding.left == desiredPadding)
-            {
-              //  moveButtons = false;
-            }
+            MoveButtons();
         }
+    }
+
+    void MoveButtons()
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(transform.GetComponent<RectTransform>());
+        if (Mathf.Abs(170 - buttons[currentButton].transform.GetComponent<RectTransform>().localPosition.x) < 5)
+        {
+            moveButtons = false;
+            return;
+        }
+        if (buttons[currentButton].transform.GetComponent<RectTransform>().localPosition.x < 170)
+        {
+            transform.GetComponent<HorizontalLayoutGroup>().padding.left += buttonMoveSpeed;
+        }
+        else if (buttons[currentButton].transform.GetComponent<RectTransform>().localPosition.x > 170)
+        {
+            transform.GetComponent<HorizontalLayoutGroup>().padding.left -= buttonMoveSpeed;
+        }
+        
+        
     }
 
 
@@ -100,6 +95,7 @@ public class GlassSwipeMenu : GestureDetector
     protected override void SwipeForward()
     {
         base.SwipeForward();
+
         FocusOnButton(currentButton + 1);
     }
     
